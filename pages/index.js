@@ -113,7 +113,7 @@ export default function Home() {
       </Head>
       <section>
         <div>
-        <hi>はこだて未来大学バス停電光掲示板</hi>
+         <h1>はこだて未来大学バス停電光掲示板</h1>
         </div>
         
         <Clock />
