@@ -112,7 +112,10 @@ export default function Home() {
         <title>ページのタイトルです</title>
       </Head>
       <section>
+        <div>
         <hi>はこだて未来大学バス停電光掲示板</hi>
+        </div>
+        
         <Clock />
         <GetBustime />
       </section>
