@@ -112,7 +112,8 @@ export default function Home() {
         <title>ページのタイトルです</title>
       </Head>
       <section>
-        <div>
+        <div
+        className={styles.center}>
          <h1>はこだて未来大学バス停電光掲示板</h1>
         </div>
         
