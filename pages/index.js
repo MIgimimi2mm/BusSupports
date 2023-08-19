@@ -2,9 +2,37 @@ import Head from 'next/head';
 import React, {useState, useEffect} from 'react';
 import bustimesData from '../bustime.json';
 import styles from '../styles/Home.module.css'
+import holidayJp from 'japanese-holidays';
+
+const isItWeekend = () => {
+  const currentDate = new Date();
+  const dayOfWeek = currentDate.getDay();
+  return dayOfWeek === 0 || dayOfWeek === 6;
+};
+
+const isItHoliday = () => {
+  const currentDate = new Date();
+  return holidayJp.isHoliday(currentDate);
+};
+
+
+const DiagramChecker = () => {
+  const isWeekendorHoliday = (isItWeekend() || isItHoliday());
+  return(
+    <div
+        className={styles.center}>
+    <h2>
+      <p>{isWeekendorHoliday ? '休日ダイヤ' : '平日ダイヤ'}</p>
+    </h2>
+  </div>
+  );
+    
+}
+
 
 const sortBustimes = () => {
-  const sortedBustimes = bustimesData.BustimesWeekday.sort((a, b) => {
+  const todaybustime = ((isItWeekend() || isItHoliday())) ? bustimesData.BustimesHoliday : bustimesData.BustimesWeekday;
+  const sortedBustimes = todaybustime.sort((a, b) => {
     if (a.hour !== b.hour) {
       return a.hour - b.hour;
     }
@@ -91,7 +119,8 @@ const GetBustime = () => {
           ))}
         </div>
       ) : (
-        <div>
+        <div
+          className={styles.center}>
           今日のバスの時刻はすべて終了しました。
         </div>
       )}
@@ -118,6 +147,7 @@ export default function Home() {
         </div>
         
         <Clock />
+        <DiagramChecker />
         <GetBustime />
       </section>
     </div>

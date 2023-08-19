@@ -52,5 +52,32 @@
     {"hour":16,"minute":49,"route":"55C(元町,未来大経由)","destination":"赤川"},
     {"hour":17,"minute":52,"route":"55F","destination":"赤川"},
     {"hour":19,"minute":30,"route":"55F","destination":"赤川"}
+],
+"BustimesHoliday":[
+    {"hour":9,"minute":6,"route":"55A","destination":"函館駅前"},
+    {"hour":9,"minute":48,"route":"55A","destination":"函館駅前"},
+    {"hour":17,"minute":38,"route":"55A","destination":"函館駅前"},
+    {"hour":18,"minute":40,"route":"55A","destination":"函館駅前"},
+    {"hour":14,"minute":46,"route":"55B(夏季)","destination":"函館駅前"},
+    {"hour":15,"minute":25,"route":"55B(夏季)","destination":"函館駅前"},
+    {"hour":16,"minute":40,"route":"55B(夏季)","destination":"函館駅前"},
+    {"hour":20,"minute":17,"route":"55F","destination":"千代台"},
+    {"hour":10,"minute":54,"route":"55H(亀田支所前-小川の里)","destination":"亀田支所前"},
+    {"hour":12,"minute":15,"route":"55H(亀田支所前-小川の里)","destination":"亀田支所前"},
+    {"hour":13,"minute":40,"route":"55H(亀田支所前-小川の里)","destination":"亀田支所前"},
+    {"hour":7,"minute":48,"route":"50","destination":"赤川"},
+    {"hour":8,"minute":17,"route":"55A","destination":"赤川"},
+    {"hour":16,"minute":28,"route":"55A","destination":"赤川"},
+    {"hour":17,"minute":23,"route":"55A","destination":"赤川"},
+    {"hour":18,"minute":12,"route":"55A","destination":"赤川"},
+    {"hour":19,"minute":42,"route":"55A","destination":"赤川"},
+    {"hour":20,"minute":53,"route":"55A","destination":"赤川"},
+    {"hour":9,"minute":32,"route":"55B(夏季)","destination":"小川の里"},
+    {"hour":10,"minute":22,"route":"55H(亀田支所前-小川の里)","destination":"小川の里"},
+    {"hour":11,"minute":43,"route":"55H(亀田支所前-小川の里)","destination":"小川の里"},
+    {"hour":13,"minute":8,"route":"55H(亀田支所前-小川の里)","destination":"小川の里"},
+    {"hour":13,"minute":48,"route":"55H(亀田支所前-小川の里)","destination":"小川の里"},
+    {"hour":14,"minute":53,"route":"55H(亀田支所前-小川の里)","destination":"小川の里"}
+
 ]
 }
