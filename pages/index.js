@@ -136,7 +136,8 @@ const GetBustime = () => {
 
 export default function Home() {
   return (
-    <div>
+    <div
+      className={styles.container}>
       <Head>
         <title>ページのタイトルです</title>
       </Head>

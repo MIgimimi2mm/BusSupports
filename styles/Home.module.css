@@ -87,6 +87,12 @@
   text-align: center;
 }
 
+.container {
+  max-width: 36rem;
+  padding: 0 1rem;
+  margin: 3rem auto 6rem;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
