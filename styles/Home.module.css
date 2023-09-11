@@ -50,22 +50,23 @@
 }
 
 .card {
-  margin: 2rem;
+  margin: 1rem;
   flex-basis: 45%;
-  padding: 2.5rem;
+  padding: 1.5rem;
   text-align: center;
   color: inherit;
   text-decoration: none;
-  border: 1px solid #eaeaea;
+  border: 2px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
+  
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  
+  border-color: #81bcff;
 }
 
 .card h3 {
@@ -85,12 +86,79 @@
 
 .center {
   text-align: center;
+  font-family: "MS Sans Serif", Helvetica Neue, sans-serif;
 }
 
 .container {
   max-width: 36rem;
   padding: 0 1rem;
   margin: 3rem auto 6rem;
+}
+
+.underline {
+  padding: 1em;
+  border-bottom: #7a7a7a solid 1px;
+}
+
+.underline:after {
+  color: #7a7a7a;
+}
+
+.keitou{
+  font-size: 15px;
+  text-align: left;
+}
+
+.ikisaki{
+  font-size: 20px;
+}
+
+.time{
+  font-size: 50px;
+  letter-spacing: 2px;
+  font-family: "MS Sans Serif", Helvetica Neue, sans-serif;
+}
+
+.akagawa{
+  background-image: url('/images/Akagawa.png'); /* 背景画像のパスを指定 */
+  background-size: cover; /* 画像をコンテナに合わせて調整 */
+  background-repeat: no-repeat; /* 繰り返しvscode-file://vscode-app/c:/Users/Asako_Naoto/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlを無効にする */
+  background-position: center center; /* 画像を中央に配置 */
+}
+
+.hakodateSta{
+  background-image: url('/images/HakodateSta.jpg'); /* 背景画像のパスを指定 */
+  background-size: cover; /* 画像をコンテナに合わせて調整 */
+  background-repeat: no-repeat; /* 繰り返しvscode-file://vscode-app/c:/Users/Asako_Naoto/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlを無効にする */
+  background-position: center center; /* 画像を中央に配置 */
+}
+
+.chiyogadai{
+  background-image: url('/images/chiyogadai.jpg'); /* 背景画像のパスを指定 */
+  background-size: cover; /* 画像をコンテナに合わせて調整 */
+  background-repeat: no-repeat; /* 繰り返しvscode-file://vscode-app/c:/Users/Asako_Naoto/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlを無効にする */
+  background-position: center center; /* 画像を中央に配置 */
+}
+
+.syouwa{
+  background-image: url('/images/Syouwa.jpg'); /* 背景画像のパスを指定 */
+  background-size: cover; /* 画像をコンテナに合わせて調整 */
+  background-repeat: no-repeat; /* 繰り返しvscode-file://vscode-app/c:/Users/Asako_Naoto/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlを無効にする */
+  background-position: center center; /* 画像を中央に配置 */
+}
+
+.kamedasisyo{
+  background-image: url('/images/.kamedasisyo.jpg'); /* 背景画像のパスを指定 */
+  background-size: cover; /* 画像をコンテナに合わせて調整 */
+  background-repeat: no-repeat; /* 繰り返しvscode-file://vscode-app/c:/Users/Asako_Naoto/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlを無効にする */
+  background-position: center center; /* 画像を中央に配置 */
+}
+
+.ogawanosato{
+  background-image: url('/images/.Ogawanosato.jpg'); /* 背景画像のパスを指定 */
+  background-size: cover; /* 画像をコンテナに合わせて調整 */
+  background-repeat: no-repeat; /* 繰り返しvscode-file://vscode-app/c:/Users/Asako_Naoto/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlを無効にする */
+  background-position: center center; /* 画像を中央に配置 */
 }
 
 @media (max-width: 600px) {
