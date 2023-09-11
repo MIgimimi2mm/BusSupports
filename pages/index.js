@@ -163,7 +163,7 @@ export default function Home() {
         ${styles.underline }
         `}>
         
-          <h1>はこだて未来大学バス停情報</h1>
+          <h1>はこだて未来大バス停情報</h1>
         </div>
 
         <Clock />
