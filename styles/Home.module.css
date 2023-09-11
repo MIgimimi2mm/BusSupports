@@ -89,6 +89,11 @@
   font-family: "MS Sans Serif", Helvetica Neue, sans-serif;
 }
 
+.font {
+  font-family: "MS Sans Serif", Helvetica Neue, sans-serif;
+
+}
+
 .container {
   max-width: 36rem;
   padding: 0 1rem;
@@ -107,10 +112,14 @@
 .keitou{
   font-size: 15px;
   text-align: left;
+  font-family: "MS Sans Serif", Helvetica Neue, sans-serif;
+
 }
 
 .ikisaki{
   font-size: 20px;
+  font-family: "MS Sans Serif", Helvetica Neue, sans-serif;
+
 }
 
 .time{

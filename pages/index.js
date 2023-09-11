@@ -113,7 +113,7 @@ const GetBustime = () => {
   return (
     <div>
       {nextBuses.length > 0 ? (
-        <div>
+        <div className={styles.font}>
           <p>
             <strong>大学前のバス停情報：</strong>
           </p>
