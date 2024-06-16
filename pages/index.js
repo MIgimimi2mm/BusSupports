@@ -124,19 +124,23 @@ const GetBustime = () => {
             ${bus.destination === "昭和ターミナル" ? styles.syouwa : ''}
             ${bus.destination === "亀田支所前" ? styles.kamedasisyo : ''}
             ${bus.destination === "小川の里" ? styles.ogawanosato : ''}
+            ${bus.destination === "西高校前" ? styles.nisiHighSchool : ''}
             ${bus.destination === "函館駅前" ? styles.hakodateSta : ''}`}
             
             >
               <div onClick={() => togglePanel(index)}>
                 <div className={styles['keitou']}>{bus.route} 系統</div>
                 <p>
-                  <span className={styles.ikisaki}>{bus.destination} 行き{'　'.repeat(7 - bus.destination.length)}</span>
+                  <span className={styles.ikisaki}>{bus.destination} 行き{'　'.repeat(10 - bus.destination.length)}</span>
                   <span className={styles.time}>{String(bus.hour).padStart(2, '0')}:{String(bus.minute).padStart(2, '0')}</span>
                 </p>
 
               </div>
               {openPanel === index && (
-                <div className={styles.panelContent}>
+                <div className={`${styles.panelContent}
+                ${styles.card}
+                `}
+                >
                   <p>こんにちは</p>
                 </div>
               )}

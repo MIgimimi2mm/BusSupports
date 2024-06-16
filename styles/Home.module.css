@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 
 .title a {
@@ -86,11 +87,11 @@
 
 .center {
   text-align: center;
-  font-family: "MS Sans Serif", Helvetica Neue, sans-serif;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
 }
 
 .font {
-  font-family: "MS Sans Serif", Helvetica Neue, sans-serif;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
 
 }
 
@@ -157,19 +158,25 @@
 }
 
 .kamedasisyo{
-  background-image: url('/images/.kamedasisyo.jpg'); /* 背景画像のパスを指定 */
+  background-image: url('/images/Kamedasisyo.jpg'); /* 背景画像のパスを指定 */
   background-size: cover; /* 画像をコンテナに合わせて調整 */
   background-repeat: no-repeat; /* 繰り返しvscode-file://vscode-app/c:/Users/Asako_Naoto/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlを無効にする */
   background-position: center center; /* 画像を中央に配置 */
 }
 
 .ogawanosato{
-  background-image: url('/images/.Ogawanosato.jpg'); /* 背景画像のパスを指定 */
+  background-image: url('/images/Ogawanosato.jpg'); /* 背景画像のパスを指定 */
   background-size: cover; /* 画像をコンテナに合わせて調整 */
   background-repeat: no-repeat; /* 繰り返しvscode-file://vscode-app/c:/Users/Asako_Naoto/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlを無効にする */
   background-position: center center; /* 画像を中央に配置 */
 }
 
+.nisiHighSchool{
+  background-image: url('/images/NishiHighSchool.jpg'); /* 背景画像のパスを指定 */
+  background-size: cover; /* 画像をコンテナに合わせて調整 */
+  background-repeat: no-repeat; /* 繰り返しvscode-file://vscode-app/c:/Users/Asako_Naoto/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlを無効にする */
+  background-position: center center; /* 画像を中央に配置 */
+}
 @media (max-width: 600px) {
   .grid {
     width: 100%;
