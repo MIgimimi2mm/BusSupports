@@ -141,7 +141,7 @@ const GetBustime = () => {
                 ${styles.card}
                 `}
                 >
-                  <p>こんにちは</p>
+                  <p>定刻通り</p>
                 </div>
               )}
             </div>
