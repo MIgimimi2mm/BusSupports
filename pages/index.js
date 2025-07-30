@@ -4,176 +4,140 @@ import bustimesData from '../bustime.json';
 import styles from '../styles/Home.module.css';
 import holidayJp from 'japanese-holidays';
 
+// Determine if today is a weekend (Saturday/Sunday)
 const isItWeekend = () => {
   const currentDate = new Date();
   const dayOfWeek = currentDate.getDay();
   return dayOfWeek === 0 || dayOfWeek === 6;
 };
 
+// Determine if today is a Japanese national holiday
 const isItHoliday = () => {
   const currentDate = new Date();
   return holidayJp.isHoliday(currentDate);
 };
 
-const DiagramChecker = () => {
-  const isWeekendorHoliday = isItWeekend() || isItHoliday();
-  return (
-    <div className={styles.center}>
-      <h2>
-        <p>{isWeekendorHoliday ? '休日ダイヤ' : '平日ダイヤ'}</p>
-      </h2>
-    </div>
-  );
+/**
+ * Choose a background colour based on the bus route.  Colour coding
+ * helps users differentiate services at a glance.  New routes
+ * default to a muted tone so they still render legibly even if no
+ * specific colour mapping exists.
+ *
+ * @param {string} route - The bus route identifier (e.g. "55A").
+ * @returns {string} A hex colour string for use as a CSS background.
+ */
+const getRouteColor = (route) => {
+  const routeColorMap = {
+    '55A': '#0070f3',       // blue
+    '55C': '#B22222',       // firebrick
+    '55F': '#FFA500',       // orange
+    '55G': '#228B22',       // forest green
+    '55H': '#8B008B',       // dark magenta
+    '50' : '#8B4513',       // saddle brown
+  };
+  return routeColorMap[route] || '#444444';
 };
 
+/**
+ * Sort the appropriate bustimes array (weekday or holiday) in ascending
+ * order.  Sorting by hour then by minute ensures the times appear
+ * chronologically.
+ */
 const sortBustimes = () => {
   const todaybustime = (isItWeekend() || isItHoliday())
     ? bustimesData.BustimesHoliday
     : bustimesData.BustimesWeekday;
-  const sortedBustimes = todaybustime.sort((a, b) => {
+  return [...todaybustime].sort((a, b) => {
     if (a.hour !== b.hour) {
       return a.hour - b.hour;
     }
     return a.minute - b.minute;
   });
-
-  return sortedBustimes;
 };
 
-const Clock = () => {
-  const [currentTime, setCurrentTime] = useState(null);
-
-  useEffect(() => {
-    setCurrentTime(new Date());
-    const interval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  if (!currentTime) return null;
-
-  return (
-    <div className={`${styles.center}
-        ${styles.underline }
-        `}>
-      <h1>
-        現在の時刻
-        <p>{currentTime.toLocaleTimeString()}</p>
-      </h1>
-    </div>
-  );
-};
-
-const GetBustime = () => {
+export default function Home() {
   const [nextBuses, setNextBuses] = useState([]);
   const [currentTime, setCurrentTime] = useState(null);
   const [openPanel, setOpenPanel] = useState(null);
 
+  // Update the clock and upcoming buses every second
   useEffect(() => {
-    setCurrentTime(new Date());
-    const findNextBuses = () => {
+    const updateInfo = () => {
       const now = new Date();
       setCurrentTime(now);
 
+      // Filter upcoming buses based on current time
       const allBustimes = sortBustimes();
       const upcomingBuses = [];
-      for (let bus of allBustimes) {
+      for (const bus of allBustimes) {
         if (
-          (bus.hour > now.getHours()) ||
+          bus.hour > now.getHours() ||
           (bus.hour === now.getHours() && bus.minute > now.getMinutes())
         ) {
           upcomingBuses.push(bus);
-          /*
-          if (upcomingBuses.length === 5) {
-            break; // 5つ先のバスを取得したらループを抜ける
-          }
-          */
         }
       }
       setNextBuses(upcomingBuses);
     };
 
-    findNextBuses();
-    const interval = setInterval(() => {
-      setCurrentTime(new Date());
-      findNextBuses();
-    }, 1000);
+    updateInfo();
+    const interval = setInterval(updateInfo, 1000);
     return () => clearInterval(interval);
   }, []);
 
+  // Toggle the detail panel for a bus entry
   const togglePanel = (index) => {
-    if (openPanel === index) {
-      setOpenPanel(null);
-    } else {
-      setOpenPanel(index);
-    }
+    setOpenPanel(openPanel === index ? null : index);
   };
 
-  return (
-    <div>
-      {nextBuses.length > 0 ? (
-        <div className={styles.font}>
-          <p>
-            <strong>大学前のバス停情報：</strong>
-          </p>
-          {nextBuses.map((bus, index) => (
-            <div key={index} className={`${styles.card} 
-            ${bus.destination === "赤川" ? styles.akagawa : ''}
-            ${bus.destination === "千代台" ? styles.chiyogadai : ''}
-            ${bus.destination === "昭和ターミナル" ? styles.syouwa : ''}
-            ${bus.destination === "亀田支所前" ? styles.kamedasisyo : ''}
-            ${bus.destination === "小川の里" ? styles.ogawanosato : ''}
-            ${bus.destination === "西高校前" ? styles.nisiHighSchool : ''}
-            ${bus.destination === "函館駅前" ? styles.hakodateSta : ''}`}
-            
-            >
-              <div onClick={() => togglePanel(index)}>
-                <div className={styles['keitou']}>{bus.route} 系統</div>
-                <p>
-                  <span className={styles.ikisaki}>{bus.destination} 行き{'　'.repeat(10 - bus.destination.length)}</span>
-                  <span className={styles.time}>{String(bus.hour).padStart(2, '0')}:{String(bus.minute).padStart(2, '0')}</span>
-                </p>
+  const isWeekendOrHoliday = isItWeekend() || isItHoliday();
 
-              </div>
-              {openPanel === index && (
-                <div className={`${styles.panelContent}
-                ${styles.card}
-                `}
-                >
-                  <p>定刻通り</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className={styles.center}>
-          今日のバスの時刻はすべて終了しました。
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>はこだて未来大学バス停情報</title>
+        <title>はこだて未来大バス停情報</title>
       </Head>
-      <section>
-        <div className={`${styles.center}
-        ${styles.underline }
-        `}>
-        
-          <h1>はこだて未来大バス停情報</h1>
-        </div>
+      <main className={styles.main}>
+        <h1 className={styles.headerTitle}>はこだて未来大バス停情報</h1>
 
-        <Clock />
-        <DiagramChecker />
-        <GetBustime />
-      </section>
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>現在の時刻</h2>
+          {/* currentTime may be null during first render */}
+          <p className={styles.currentTime}>{currentTime ? currentTime.toLocaleTimeString() : ''}</p>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>{isWeekendOrHoliday ? '休日ダイヤ' : '平日ダイヤ'}</h2>
+        </section>
+
+        <section className={styles.busListSection}>
+          {nextBuses.length > 0 ? (
+            nextBuses.map((bus, index) => (
+              <div
+                key={`${bus.route}-${bus.hour}-${bus.minute}-${index}`}
+                className={styles.busCard}
+                onClick={() => togglePanel(index)}
+              >
+                <div className={styles.busRow}>
+                  <span
+                    className={styles.routeBadge}
+                    style={{ backgroundColor: getRouteColor(bus.route) }}
+                  >
+                    {bus.route}
+                  </span>
+                  <span className={styles.destination}>{bus.destination}</span>
+                  <span className={styles.time}>{`${String(bus.hour).padStart(2, '0')}:${String(bus.minute).padStart(2, '0')}`}</span>
+                </div>
+                {openPanel === index && (
+                  <div className={styles.status}>定刻通り</div>
+                )}
+              </div>
+            ))
+          ) : (
+            <p className={styles.noBusMessage}>今日のバスの時刻はすべて終了しました。</p>
+          )}
+        </section>
+      </main>
     </div>
   );
 }
